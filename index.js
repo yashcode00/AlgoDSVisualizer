@@ -23,7 +23,7 @@ function arrnew() {
     bars.remove();
     var bb = document.createElement("div");
     bb.setAttribute("id", "bars");
-    document.querySelector('body').appendChild(bb);
+    document.querySelector("body").appendChild(bb);
     // console.log(document.getElementById("bars"))/
     genBars(l);
 }
@@ -56,9 +56,9 @@ async function insertionSort() {
 
 function matteKudasai() {
     var millisec;
-    if (document.getElementById("speed").value == 'slow') millisec = 100;
-    if (document.getElementById("speed").value == 'medium') millisec = 50;
-    if (document.getElementById("speed").value == 'high') millisec = 25;
+    if (document.getElementById("speed").value == "slow") millisec = 100;
+    if (document.getElementById("speed").value == "medium") millisec = 50;
+    if (document.getElementById("speed").value == "high") millisec = 25;
     return new Promise(function(resolve) {
         setTimeout(function() {
             resolve("");
@@ -119,5 +119,42 @@ async function selectionSort() {
     }
 }
 
+async function MergeSorted(a, s, e) {
+    var mid = Math.floor((s + e) / 2);
+    var i = s;
+    var j = mid + 1;
+    var ans = [];
+    while (i <= mid && j <= e) {
+        if (parseInt(a[i].style.height) < parseInt(a[j].style.height))
+            ans.push(a[i++].style.height);
+        else ans.push(a[j++].style.height);
+    }
+    while (i <= mid) ans.push(a[i++].style.height);
+    while (j <= e) ans.push(a[j++].style.height);
+
+    // copying
+    var index = s;
+    for (var p = 0; p < ans.length; ++p) {
+        //console.log(ans[p]);
+        a[index++].style.height = ans[p];
+    }
+}
+
+async function mergeSort(a, s, e) {
+    // base case
+    if (s >= e) return;
+
+    // recusive case
+    var mid = Math.floor((s + e) / 2);
+    mergeSort(a, s, mid);
+    mergeSort(a, mid + 1, e);
+
+    MergeSorted(a, s, e);
+}
+
+async function MergeSort() {
+    var bars = document.querySelectorAll(".bar");
+    mergeSort(bars, 0, bars.length - 1);
+}
+
 genBars(50);
-//insertionSort();
