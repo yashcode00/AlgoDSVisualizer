@@ -98,22 +98,20 @@ async function selectionSort() {
     for (var i = 0; i < bars.length; i++) {
         var mi = 40000,
             ind = i;
+        bars[i].style.background = "red";
         for (var j = i; j < bars.length; j++) {
             if (mi > parseInt(bars[j].style.height)) {
                 mi = parseInt(bars[j].style.height);
                 ind = j;
+                bars[ind].style.background = "red";
+                await matteKudasai();
+                bars[ind].style.background = "cyan";
             }
         }
         var temp = bars[ind].style.height;
         bars[ind].style.height = bars[i].style.height;
         bars[i].style.height = temp;
-        bars[ind].style.background = "red";
-        bars[i].style.background = "red";
-        await matteKudasai();
         bars[i].style.background = "blue";
-        if (ind != i) {
-            bars[ind].style.background = "cyan";
-        }
     }
     for (var i = 0; i < bars.length; i++) {
         bars[i].style.background = "green";
