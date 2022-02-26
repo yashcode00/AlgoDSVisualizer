@@ -18,7 +18,6 @@ function genBars(len) {
 
 function arrnew() {
     var l = document.getElementById("arr_sz").value;
-    console.log(l);
     var bars = document.getElementById("bars");
     bars.remove();
     var bb = document.createElement("div");
@@ -73,11 +72,9 @@ async function bubbleSort() {
             bars[j].style.background = "red";
             bars[j + 1].style.background = "red";
             if (parseInt(bars[j].style.height) > parseInt(bars[j + 1].style.height)) {
-                console.log(bars[j], bars[j + 1]);
                 var temp = bars[j].style.height;
                 bars[j].style.height = bars[j + 1].style.height;
                 bars[j + 1].style.height = temp;
-                console.log(bars[j], bars[j + 1]);
             }
             await matteKudasai();
             bars[j].style.background = "cyan";
@@ -100,13 +97,13 @@ async function selectionSort() {
             ind = i;
         bars[i].style.background = "red";
         for (var j = i; j < bars.length; j++) {
+            bars[j].style.background = "red";
             if (mi > parseInt(bars[j].style.height)) {
                 mi = parseInt(bars[j].style.height);
                 ind = j;
-                bars[ind].style.background = "red";
                 await matteKudasai();
-                bars[ind].style.background = "cyan";
             }
+            bars[j].style.background = "cyan";
         }
         var temp = bars[ind].style.height;
         bars[ind].style.height = bars[i].style.height;
@@ -119,42 +116,75 @@ async function selectionSort() {
     }
 }
 
-async function MergeSorted(a, s, e) {
-    var mid = Math.floor((s + e) / 2);
-    var i = s;
-    var j = mid + 1;
-    var ans = [];
-    while (i <= mid && j <= e) {
-        if (parseInt(a[i].style.height) < parseInt(a[j].style.height))
-            ans.push(a[i++].style.height);
-        else ans.push(a[j++].style.height);
-    }
-    while (i <= mid) ans.push(a[i++].style.height);
-    while (j <= e) ans.push(a[j++].style.height);
+async function merge(ele, low, mid, high) {
+    const n1 = mid - low + 1;
+    const n2 = high - mid;
+    let left = new Array(n1);
+    let right = new Array(n2);
 
-    // copying
-    var index = s;
-    for (var p = 0; p < ans.length; ++p) {
-        //console.log(ans[p]);
-        a[index++].style.height = ans[p];
+    for (let i = 0; i < n1; i++) {
+        await matteKudasai();
+        ele[low + i].style.background = 'red';
+        left[i] = ele[low + i].style.height;
+    }
+    for (let i = 0; i < n2; i++) {
+        await matteKudasai();
+        ele[mid + 1 + i].style.background = 'red';
+        right[i] = ele[mid + 1 + i].style.height;
+    }
+    await matteKudasai();
+    let i = 0,
+        j = 0,
+        k = low;
+    while (i < n1 && j < n2) {
+        await matteKudasai();
+        if (parseInt(left[i]) < parseInt(right[j])) {
+            ele[k].style.background = "blue";
+            ele[k].style.height = left[i];
+            i++;
+            k++;
+        } else {
+            ele[k].style.background = "blue";
+            ele[k].style.height = right[j];
+            j++;
+            k++;
+        }
+    }
+    while (i < n1) {
+        await matteKudasai();
+        ele[k].style.background = "blue";
+        ele[k].style.height = left[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        await matteKudasai();
+        ele[k].style.background = "blue";
+        ele[k].style.height = right[j];
+        j++;
+        k++;
     }
 }
 
-async function mergeSort(a, s, e) {
-    // base case
-    if (s >= e) return;
-
-    // recusive case
-    var mid = Math.floor((s + e) / 2);
-    mergeSort(a, s, mid);
-    mergeSort(a, mid + 1, e);
-
-    MergeSorted(a, s, e);
+async function mergeSort(ele, l, r) {
+    if (l >= r) {
+        return;
+    }
+    const m = l + Math.floor((r - l) / 2);
+    await mergeSort(ele, l, m);
+    await mergeSort(ele, m + 1, r);
+    await merge(ele, l, m, r);
 }
 
 async function MergeSort() {
-    var bars = document.querySelectorAll(".bar");
-    mergeSort(bars, 0, bars.length - 1);
+    let bars = document.querySelectorAll(".bar");
+    let s = 0;
+    let e = parseInt(bars.length) - 1;
+    await mergeSort(bars, s, e);
+    for (var i = 0; i < bars.length; i++) {
+        bars[i].style.background = "green";
+        await matteKudasai();
+    }
 }
 
 genBars(50);
