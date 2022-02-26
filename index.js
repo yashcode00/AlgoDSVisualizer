@@ -253,14 +253,12 @@ async function QuickSort(arr, s, e) {
     for (var i = s; i < e; ++i) {
         await matteKudasai();
         if (parseInt(arr[i].style.height) < pivot) {
-            k++;
-            swap(arr, i, k);
+            swap(arr, i, ++k);
         }
     }
-    swap(arr, k + 1, e);
+    swap(arr, ++k, e);
     await matteKudasai();
     arr[index].style.background = "cyan";
-    k++;
     //console.log(pivot,",",k,",",s,"-",e);
     //console.log(arr);
     await matteKudasai();
