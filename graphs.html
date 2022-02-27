@@ -6,13 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/graphdracula/1.3.0/dracula.min.js"
+        integrity="sha512-PJ4xeJ2YfC5ybVI5D5M0J2hg/389ejssyl16qhZZh3X0oUdgYPqcYAh6++qncqiyQiqyGf98OynvTkeZyxweeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Algo DS Visualizer | Graphs</title>
 </head>
 
 <body>
-    <div id="graph">
-        
+    <div id="canvas">
+
     </div>
+    <input name="node0" id="node0">
+    <button class=".button" onclick="_AddNode()">Add Node</button>
+    <input name="node1" id="node1">
+    <input name="node2" id="node2">
+    <button class=".button" onclick="_AddEdge()">Add Edge</button>
     <script src="graphs.js"></script>
 </body>
 

@@ -11,6 +11,7 @@ function genBars(len) {
     const bar = document.createElement("div");
     bar.style.height = `${arr[i] * 2}px`;
     bar.classList.add("bar");
+    bar.style.width = eval(1004/len)+"px";
     bar.classList.add("flex-item");
     bars.appendChild(bar);
   }
@@ -120,114 +121,63 @@ async function selectionSort() {
   }
 }
 
-async function merge(ele, low, mid, high) {
-  const n1 = mid - low + 1;
-  const n2 = high - mid;
-  let left = new Array(n1);
-  let right = new Array(n2);
-
-  for (let i = 0; i < n1; i++) {
-    await matteKudasai();
-    ele[low + i].style.background = "red";
-    left[i] = ele[low + i].style.height;
-  }
-  for (let i = 0; i < n2; i++) {
-    await matteKudasai();
-    ele[mid + 1 + i].style.background = "orange";
-    right[i] = ele[mid + 1 + i].style.height;
-  }
-  await matteKudasai();
-  let i = 0,
-    j = 0,
-    k = low;
-  while (i < n1 && j < n2) {
-    await matteKudasai();
-    if (parseInt(left[i]) < parseInt(right[j])) {
-      ele[k].style.background = "blue";
-      ele[k].style.height = left[i];
-      i++;
-      k++;
+async function MergeSorted(a, s, e) {
+  var mid = Math.floor((s + e) / 2);
+  var i = s;
+  var j = mid + 1;
+  var ans = [];
+  while (i <= mid && j <= e) {
+    if (parseInt(a[i].style.height) < parseInt(a[j].style.height)) {
+      a[i].style.background = "yellow";
+      ans.push(a[i++].style.height);
     } else {
-      ele[k].style.background = "blue";
-      ele[k].style.height = right[j];
-      j++;
-      k++;
+      a[j].style.background = "orange";
+      ans.push(a[j++].style.height);
     }
-  }
-  while (i < n1) {
     await matteKudasai();
-    ele[k].style.background = "blue";
-    ele[k].style.height = left[i];
-    i++;
-    k++;
   }
-  while (j < n2) {
+  while (i <= mid) {
     await matteKudasai();
-    ele[k].style.background = "blue";
-    ele[k].style.height = right[j];
-    j++;
-    k++;
+    a[i].style.background = "yellow";
+    ans.push(a[i++].style.height);
+  }
+  while (j <= e) {
+    await matteKudasai();
+    a[j].style.background = "orange";
+    ans.push(a[j++].style.height);
+  }
+
+  // copying
+  await matteKudasai();
+  var index = s;
+  for (var p = 0; p < ans.length; ++p) {
+    //console.log(ans[p]);
+    a[index].style.background = "blue";
+    a[index++].style.height = ans[p];
+    await matteKudasai();
   }
 }
 
-async function mergeSort(ele, l, r) {
-  if (l >= r) {
-    return;
-  }
-  const m = l + Math.floor((r - l) / 2);
-  await mergeSort(ele, l, m);
-  await mergeSort(ele, m + 1, r);
-  await merge(ele, l, m, r);
+async function mergeSort(a, s, e) {
+  // base case
+  if (s >= e) return;
+
+  // recusive case
+  var mid = Math.floor((s + e) / 2);
+  await mergeSort(a, s, mid);
+  await mergeSort(a, mid + 1, e);
+
+  await MergeSorted(a, s, e);
 }
 
 async function MergeSort() {
-  let bars = document.querySelectorAll(".bar");
-  let s = 0;
-  let e = parseInt(bars.length) - 1;
-  await mergeSort(bars, s, e);
+  var bars = document.querySelectorAll(".bar");
+  await mergeSort(bars, 0, bars.length - 1);
   for (var i = 0; i < bars.length; i++) {
     bars[i].style.background = "green";
     await matteKudasai();
   }
 }
-
-// async function MergeSorted(a, s, e) {
-//   var mid = Math.floor((s + e) / 2);
-//   var i = s;
-//   var j = mid + 1;
-//   var ans = [];
-//   while (i <= mid && j <= e) {
-//     if (parseInt(a[i].style.height) < parseInt(a[j].style.height))
-//       ans.push(a[i++].style.height);
-//     else ans.push(a[j++].style.height);
-//   }
-//   while (i <= mid) ans.push(a[i++].style.height);
-//   while (j <= e) ans.push(a[j++].style.height);
-
-//   // copying
-//   var index = s;
-//   for (var p = 0; p < ans.length; ++p) {
-//     //console.log(ans[p]);
-//     a[index++].style.height = ans[p];
-//   }
-// }
-
-// async function mergeSort(a, s, e) {
-//   // base case
-//   if (s >= e) return;
-
-//   // recusive case
-//   var mid = Math.floor((s + e) / 2);
-//   mergeSort(a, s, mid);
-//   mergeSort(a, mid + 1, e);
-
-//   MergeSorted(a, s, e);
-// }
-
-// async function MergeSort() {
-//   var bars = document.querySelectorAll(".bar");
-//   mergeSort(bars, 0, bars.length - 1);
-// }
 
 // A utility function to swap two elements
 async function swap(arr, i, j) {
@@ -393,7 +343,6 @@ async function RadixSort() {
     bars[i].style.background = "green";
     await matteKudasai();
   }
-  console.log(bars);
 }
 
 genBars(50);
