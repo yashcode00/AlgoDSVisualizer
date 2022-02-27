@@ -9,6 +9,11 @@ body {
   justify-content: center;
   align-items: center;
   background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+  background: #0f0c29;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
   font-weight: 300;
 }
 
@@ -86,29 +91,19 @@ body {
   text-shadow: 0 0 5px rgba(100, 100, 255, 0.6);
 }
 
-.lefter {
-  transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
-  background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/organization-512.png);
-}
-
 .left {
   transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
-  background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/creative_draw-512.png);
+  background-image: url(https://www.tutorialandexample.com/wp-content/uploads/2020/10/image-307.png);
 }
 
 .center {
   opacity: 1;
-  background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/app_window-512.png);
+  background-image: url(https://flyclipart.com/thumb2/black-bar-chart-icon-554825.png);
 }
 
 .right {
   transform: translateX(30px) translateZ(-25px) rotateY(5deg);
-  background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/cloud_weather-512.png);
-}
-
-.righter {
-  transform: translateX(60px) translateZ(-50px) rotateY(10deg);
-  background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/search-512.png);
+  background-image: url(https://cdn-media-1.freecodecamp.org/images/3MPRx8M27DX95wWbfufQ7MSAWytADyK1Nrwu);
 }
 
 .explainer {
@@ -153,15 +148,18 @@ a:visited {
   color: blue;
 }
 
-/*
-  Click and drag to attract
-  Right click to repulse
-  Mouse-wheel click to create a time dilation field
-  Use the Controls to decrease or increase
-  the particle count to tweak performance.
-*/
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
-html,body{
-  margin:0;
-  padding:0;
+
+h2 {
+  position: absolute;
+  top: 0;
+  text-align: center;
+  width: 100%;
+  text-shadow: 0px 0px 50px #33a;
+  font-size: 3rem;
+  color: white;
 }

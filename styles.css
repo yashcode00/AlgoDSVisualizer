@@ -55,6 +55,7 @@ nav {
     color: black;
     text-shadow: 1px 1px 1px white;
     font-weight: bold;
+    width: 100vw;
 }
 
 .row {
@@ -91,6 +92,7 @@ button {
     padding: 19px 24px;
     cursor: pointer;
     margin: auto 10px;
+    opacity:1;
 }
 
 #canvas {
@@ -116,7 +118,7 @@ path {
 
 a {
     text-decoration: none;
-    color:white;
+    color: white;
 }
 
 a:visited {
