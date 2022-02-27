@@ -1,3 +1,4 @@
+@import url("http://fonts.cdnfonts.com/css/helvetica-neue-9");
 body {
   text-align: center;
   color: white;
@@ -132,4 +133,8 @@ a:visited {
 
 #back {
   margin-top: 50px;
+}
+
+.heading {
+  font-family: "Helvetica Neue", sans-serif;
 }
