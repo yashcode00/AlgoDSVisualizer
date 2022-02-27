@@ -80,9 +80,7 @@ async function bubbleSort() {
       bars[j].style.background = "cyan";
       bars[j + 1].style.background = "cyan";
     }
-    for (var j = bars.length - i - 1; j < bars.length; j++) {
-      bars[j].style.background = "blue";
-    }
+    bars[bars.length-i-1].style.background = "blue";
   }
   for (var i = 0; i < bars.length; i++) {
     bars[i].style.background = "green";
@@ -93,17 +91,23 @@ async function bubbleSort() {
 async function selectionSort() {
   var bars = document.querySelectorAll(".bar");
   for (var i = 0; i < bars.length; i++) {
-    var mi = 40000,
+    var mi = parseInt(bars[i].style.height),
       ind = i;
-    bars[i].style.background = "red";
-    for (var j = i; j < bars.length; j++) {
+    bars[i].style.background = "orange";
+    for (var j = i+1; j < bars.length; j++) {
+      bars[j].style.background = "cyan";
+    }
+    for (var j = i+1; j < bars.length; j++) {
       bars[j].style.background = "red";
+      await matteKudasai();
       if (mi > parseInt(bars[j].style.height)) {
         mi = parseInt(bars[j].style.height);
+        bars[ind].style.background = "cyan";
+        bars[j].style.background = "orange";
         ind = j;
-        await matteKudasai();
+      } else {
+        bars[j].style.background = "cyan";
       }
-      bars[j].style.background = "cyan";
     }
     var temp = bars[ind].style.height;
     bars[ind].style.height = bars[i].style.height;
@@ -280,7 +284,7 @@ async function quicks() {
 async function swap2(arr, i, j) {
   arr[i].style.background = "red";
   arr[j].style.background = "red";
-  //await matteKudasai();
+  await matteKudasai();
   let temp = arr[i].style.height;
   arr[i].style.height = arr[j].style.height;
   arr[j].style.height = temp;
@@ -302,7 +306,7 @@ async function Heapify(arr, i, e) {
       max = right;
     }
     if (parseInt(arr[max].style.height) >= parseInt(arr[parent].style.height)) {
-      swap2(arr, max, parent);
+      await swap2(arr, max, parent);
     } else break;
     parent = max;
     left = 2 * parent + 1;
@@ -315,32 +319,29 @@ async function buildHeapfromArray(arr) {
   // choosing first parent with both children prsent
   var p = Math.floor((arr.length - 1) / 2);
   // use simply heapify correcting each tree separtely
-  for (; p >= 0; --p) Heapify(arr, p, arr.length);
+  for (; p >= 0; --p) await Heapify(arr, p, arr.length);
   await matteKudasai();
   // making sorted array inplace
   var end = arr.length - 1;
   //console.log(arr);
-  while (end > 0) {
+  while (end >= 0) {
     // pop elemnt largest from root and push it in last/swap
-    swap2(arr, 0, end);
+    await swap2(arr, 0, end);
     await matteKudasai();
-    console.log("in first");
     arr[end].style.background = "blue";
     await matteKudasai();
     // update end to be decremented
     end--;
     // place first elemnt in its correct position
-    Heapify(arr, 0, end + 1);
+    await Heapify(arr, 0, end + 1);
   }
   await matteKudasai();
 }
 
 async function HeapSort() {
   var bars = document.querySelectorAll(".bar");
-  buildHeapfromArray(bars);
-  console.log("in last");
+  await buildHeapfromArray(bars);
   for (var i = bars.length - 1; i >= 0; i--) {
-    console.log(parseInt(bars[i].style.height));
     bars[i].style.background = "green";
     await matteKudasai();
   }
