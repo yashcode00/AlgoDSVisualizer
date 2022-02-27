@@ -3,7 +3,20 @@ body {
     color: white;
     background-color: rgb(12,12,12);
 }
-
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100vw    ;
+    /* justify-content: space-around; */
+}
+body>div{
+    height: 50%;
+    /* display: flex; */
+}
 #bars {
     display: flex;
     flex-direction: row;
@@ -12,14 +25,19 @@ body {
     margin-right: auto;
     justify-content: center;
 }
-#list{
+.list{
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
+    width: 80vw;
 }
-.box{
+.listdiv{
+    display: flex;
+    flex-direction: row;
+}
+.box,.qbox{
     height: 100px;
     background-color: cyan;
     color: black;
@@ -31,23 +49,16 @@ body {
     font-weight: 800;
     font-size: 2rem;
 }
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    padding: 0 20px 30px 0;
-    line-height: 1.4;
-    /* height: 100vh; */
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
 img{
     width: 70px;
     position: relative;
     top: 40px;
-    /* height: 50px; */
+    height: 50px;
+}
+.arr{
+    width: 100px;
+    height: 100px;
+    display: none;
 }
 .flex-container {
     margin-top: 20px;
@@ -75,10 +86,12 @@ img{
 
 .btn-div{
     position: absolute;
-    bottom: 10vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 100vw;
+    width: 20vw;
+    right: 0;
+    /* margin-top: 100px; */
 }
 .btn-div input{
     margin: 15px 100px;
@@ -102,12 +115,12 @@ button {
     line-height:15px;
     padding: 19px 24px;
     cursor: pointer;
-    margin: auto 100px;
+    margin: 10px 100px;
     font-weight: 700;
 
 }
 button:hover{
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: all 0.5s;
 }
 #headpic{
@@ -117,4 +130,13 @@ button:hover{
     top: 0;
     left: 0;
     display: none;
+}
+#queue{
+    position: relative;
+    /* bottom: 0; */
+    flex-direction: row;
+    margin-top: 0;
+}
+.qbox{
+    background-color: #f7fb00;
 }

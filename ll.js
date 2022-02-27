@@ -10,7 +10,7 @@ function matteKudasai() {
 
 async function pushh(){
     var list = document.getElementsByClassName("box");
-    var val = document.getElementById("addval").value;
+    var val = document.getElementById("addvalstack").value;
     var head = document.getElementById("headpic");
     var newnode  = document.createElement("div");
     head.style.display="block"; 
@@ -60,5 +60,62 @@ async function popp(){
     }
     else{
         head.style.display = "none";
+    }
+}
+async function enqueue(){
+    var back = document.getElementById("qback");
+    var front = document.getElementById("qfront");
+    var list = document.getElementsByClassName("qbox");
+    var newnode  = document.createElement("div");
+    var val = document.getElementById("addvalqueue").value;
+    if(list.length!=0){
+        var off = list[list.length-1]
+        off.style.background="green";
+        await matteKudasai();
+        off.style.background="#f7fb00";
+    }
+    newnode.innerHTML = val;
+    newnode.classList.add("qbox");
+    newnode.classList.add("flex-item");
+    newnode.classList.add("node");
+    var p1=document.createElement("img")
+    p1.classList.add("qnode")
+    p1.src = "arrow.png";
+    if(list.length!=0){
+       document.querySelector("#queue").appendChild(p1);
+    }
+    document.querySelector("#queue").appendChild(newnode);
+    var off = list[list.length-1]
+    back.style.display="block";
+    front.style.display="block";
+    back.style.left = off.offsetLeft+230+ "px";
+    back.style.top = off.offsetTop+110+"px";
+    var top = document.getElementById("queue").firstChild;
+    front.style.left = top.offsetLeft+130+ "px";
+    front.style.top = top.offsetTop-100+"px";
+}
+async function dequeue(){
+    var front = document.getElementById("qfront");
+    var back = document.getElementById("qback");
+    var list = document.getElementsByClassName("qbox");
+    if(list.length==1){
+        back.style.display="none";
+        front.style.display="none";
+    }
+    if(list.length>0){
+        var topop = document.getElementById("queue").firstChild;
+        topop.style.background="red";
+        await matteKudasai();
+        topop.style.background="#f7fb00";
+        await matteKudasai();
+        topop.remove();
+        var topop = document.getElementById("queue").firstChild;
+        topop.remove();
+        var top = document.getElementById("queue").firstChild;
+        front.style.top = top.offsetTop-100+"px";
+        front.style.left = top.offsetLeft+130+ "px";
+        var off = list[list.length-1]
+        back.style.left = off.offsetLeft+230+ "px";
+        back.style.top = off.offsetTop+110+"px";
     }
 }

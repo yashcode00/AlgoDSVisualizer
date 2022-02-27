@@ -12,22 +12,36 @@
 </head>
 
 <body>
-    <nav style="background-color: rgb(148, 212, 140);color: black;font-weight: bold;width: 100vw;">
-        <h1>Stack</h1>
-    </nav>
-    </header>
-    <div id="list"></div>
-    <div class="row btn-div">
-        <div class="col gap-2 d-sm-flex" id="pushdiv">
-            <button type="button" class="btn btn-outline-success btn-info newArray" onclick="pushh()">PUSH</button>
-            <input id="addval" value="50">
+    <div id="stack">
+        <nav style="background-color: rgb(148, 212, 140);color: black;font-weight: bold;width: 100vw;">
+            <h1>Stack</h1>
+        </nav>
+        <div class="listdiv">
+            <div class="list" id="list"></div>
+            <div class="btn-div">
+                    <input id="addvalstack" value="50">
+                    <button type="button" class="btn btn-outline-success btn-info newArray" onclick="pushh()">PUSH</button>
+                    <button type="button" class="btn btn-outline-success btn-info newArray" style="background-image: linear-gradient(144deg,#d6fc00, #ff0000 50%,#eb6a00);"onclick="popp()">POP</button>
+            </div>
         </div>
-        <div class="col gap-2 d-sm-flex justify-content-end">
-            <button type="button" class="btn btn-outline-success btn-info newArray" style="background-image: linear-gradient(144deg,#d6fc00, #ff0000 50%,#eb6a00);"onclick="popp()">POP</button>
+        <img src="pp.png" alt="" id="headpic">
+    </div>
+    <div id="queue-div">
+        <nav style="background-color: rgb(148, 212, 140);color: black;font-weight: bold;width: 100vw;">
+            <h1>Queue</h1>
+        </nav>
+        <div class="listdiv">
+            <img src="queue1-removebg-preview.png" class="arr" id="qback">
+            <img src="queue2-removebg-preview.png" class="arr" id="qfront">
+            <div id="queue" class="list"></div>
+            <div class="btn-div">
+                <input id="addvalqueue" value="50">
+                <button type="button" class="btn btn-outline-success btn-info newArray" onclick="enqueue()">Enqueue</button>
+                <button type="button" class="btn btn-outline-success btn-info newArray" style="background-image: linear-gradient(144deg,#d6fc00, #ff0000 50%,#eb6a00);"onclick="dequeue()">Dequeue</button>
+            </div>
         </div>
     </div>
-    <img src="pp.png" alt="" id="headpic">
-    <script src="ll.js"></script>
+<script src="ll.js"></script>
 </body>
 
 </html>
