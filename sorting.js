@@ -21,11 +21,11 @@ function genBars(len) {
 
 function arrnew() {
     var l = document.getElementById("arr_sz").value;
-    var bars = document.getElementById("bars");
-    bars.remove();
+    var bars = document.getElementById("barContainer");
+    if(bars.firstElementChild) bars.removeChild(bars.firstElementChild);
     var bb = document.createElement("div");
     bb.setAttribute("id", "bars");
-    document.querySelector("body").appendChild(bb);
+    bars.appendChild(bb);
     // console.log(document.getElementById("bars"))/
     genBars(l);
 }

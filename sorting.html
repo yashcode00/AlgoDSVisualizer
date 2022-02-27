@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,27 +38,31 @@
         </div>
     </nav>
     </header>
-    <div id="bars"></div>
-    <div class="col gap-2 d-sm-flex justify-content-end btn-div">
+    <div id="barContainer">
+        <div id="bars"></div>
+    </div>
+    <div class="col">
         <button type="button" onclick="bubbleSort()" class="btn btn-outline-primary btn-info bubbleSort">Bubble
             Sort</button>
         <button type="button" onclick="selectionSort()" class="btn btn-outline-primary btn-info selectionSort">Selection
             Sort</button>
         <button type="button" onclick="insertionSort()" class="btn btn-outline-primary btn-info insertionSort">Insertion
             Sort</button>
-        <button type="button" onclick="quicks()" class="btn btn-outline-primary btn-info quickSort">Quick Sort</button>
+        <button type="button" onclick="quicks()" class="btn btn-outline-primary btn-info quickSort">Quick
+            Sort</button>
         <button type="button" onclick="MergeSort()" class="btn btn-outline-primary btn-info mergeSort">Merge
             Sort</button>
         <button type="button" onclick="HeapSort()" class="btn btn-outline-primary btn-info mergeSort">Heap Sort</button>
         <button type="button" onclick="RadixSort()" class="btn btn-outline-primary btn-info mergeSort">Radix Sort
-            <img src="crown.png" alt="" style="transform: scale(0.12) rotate(-20deg);position: absolute;display: inline-block;top: -10em; right: 4em;">
+            <img src="crown.png" alt="" style="transform: scale(0.12) rotate(-20deg);position: absolute;display: inline-block;top: 28em; right: 4em;">
         </button>
         <button type="button" onclick="detQuicks()" class="btn btn-outline-primary btn-info mergeSort">Deterministic Quick
             Sort</button>
     </div>
-    <div style="background-color: rgb(170, 161, 161);  font-family: 'Allura';position: absolute;bottom: 0px;width: 100vw;color: black;">
+    <a id="back" href="/"><button>Go Back</button></a>
+    <!-- <div style="background-color: rgb(170, 161, 161);  font-family: 'Allura';position: absolute;bottom: 0px;width: 100vw;color: black;">
        <marquee behavior="slide" direction="">Made with &#10084;&#65039; by Yash-Ritam-Saransh</marquee>
-    </div>
+    </div> -->
     <script src="sorting.js"></script>
 </body>
 </html>
