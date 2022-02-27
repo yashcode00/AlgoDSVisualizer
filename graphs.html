@@ -14,14 +14,19 @@
 </head>
 
 <body>
-    <div id="canvas">
-
+    <div id="canvas1"></div>
+    <div class="container">
+        <input id="gsz" type="range" min="1" max="15" value="8">
+        <button onclick="generateRandomGraph()">Generate Random Graph</button>
     </div>
-    <input name="node0" id="node0">
-    <button class=".button" onclick="_AddNode()">Add Node</button>
-    <input name="node1" id="node1">
-    <input name="node2" id="node2">
-    <button class=".button" onclick="_AddEdge()">Add Edge</button>
+    <div id="canvas2"></div>
+    <div class="container">
+        <input name="node0" id="node0">
+        <button class=".button" onclick="_AddNode()">Add Node</button>
+        <input name="node1" id="node1">
+        <input name="node2" id="node2">
+        <button onclick="_AddEdge()">Add Edge</button>
+    </div>
     <script src="graphs.js"></script>
 </body>
 

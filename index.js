@@ -7,13 +7,15 @@ function genBars(len) {
     arr.push(n);
   }
   var bars = document.querySelector("#bars");
+  var ba = document.querySelectorAll(".bar");
   for (let i = 0; i < arr.length; i++) {
     const bar = document.createElement("div");
     bar.style.height = `${arr[i] * 2}px`;
     bar.classList.add("bar");
-    bar.style.width = eval(1004/len)+"px";
+    bar.style.width = eval(1004 / len) + "px";
     bar.classList.add("flex-item");
     bars.appendChild(bar);
+    // ba.style.width = eval(1004/len)+"px";
   }
 }
 
@@ -324,7 +326,7 @@ async function countingSort(arr, exp) {
     arr[i].style.background = "blue";
   }
   await matteKudasai();
-  for(let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     arr[i].style.background = "cyan";
   }
 }
@@ -339,10 +341,122 @@ async function RadixSort() {
   for (var exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
     await countingSort(bars, exp);
   }
-  for(var i = 0; i < bars.length; i++) {
+  for (var i = 0; i < bars.length; i++) {
+    bars[i].style.background = "green";
+    await matteKudasai();
+  }
+  for (var i = 0; i < bars.length; i++) {
+    console.log(bars[i].style.height);
+  }
+}
+
+function partition(arr, l, r, p) {
+  var temp = arr[p].style.height;
+  arr[p].style.height = arr[r].style.height;
+  arr[r].style.height = temp;
+  var track = l;
+  for (var i = l; i < r; i++) {
+    if (parseInt(arr[i].style.height) < parseInt(arr[r].style.height)) {
+      var t = arr[i].style.height;
+      arr[i].style.height = arr[track].style.height;
+      arr[track].style.height = t;
+      track++;
+    }
+  }
+  temp = arr[track].style.height;
+  arr[track].style.height = arr[r].style.height;
+  arr[r].style.height = temp;
+  return track;
+}
+
+function selectIdx(arr, l, r, k) {
+  if (l == r) {
+    return l;
+  }
+  var dest = l + k;
+  while (true) {
+    var pIndex = r - l + 1 <= 5 ? Math.floor(Math.random() * (r - l + 1)) + l : medianOfMedians(arr, l, r);
+    pIndex = partition(arr, l, r, pIndex);
+    if (pIndex == dest)
+      return pIndex;
+    else if (pIndex < dest) {
+      l = pIndex + 1;
+    } else {
+      r = pIndex - 1;
+    }
+  }
+}
+
+function medianOfMedians(arr, l, r) {
+  var numMedians = Math.ceil((r - l) / 5);
+  for (var i = 0; i < numMedians; i++) {
+    var subl = l + i * 5;
+    var subr = subl + 4;
+    if (subr > r) {
+      subr = r;
+    }
+    var medianIdx = selectIdx(arr, subl, subr, Math.floor((subr - subl) / 2));
+    var temp = arr[medianIdx].style.height;
+    arr[medianIdx].style.height = arr[l + i].style.height;
+    arr[l + i].style.height = temp;
+  }
+  return selectIdx(arr, l, l + numMedians - 1, Math.floor(numMedians / 2));
+}
+
+function selectK(arr, l, r, k) {
+  var idx = selectIdx(arr, l, r, k);
+  return arr[l + idx];
+}
+
+async function detSwap(arr, i, j) {
+  //console.log(arr[i], ",", arr[j]);
+  arr[i].style.background = "red";
+  arr[j].style.background = "red";
+  await matteKudasai();
+  let temp = arr[i].style.height;
+  arr[i].style.height = arr[j].style.height;
+  arr[j].style.height = temp;
+  arr[i].style.background = "cyan";
+  arr[j].style.background = "cyan";
+  await matteKudasai();
+}
+
+async function DetQuickSort(arr, s, e) {
+  // base case
+  if (s >= e) return;
+
+  // rec case
+  var pivot = parseInt(selectK(arr, s, e, s+(e-s)/2).style.height);
+  arr[index].style.background = "blue";
+  await matteKudasai();
+  swap(arr, index, e);
+  var k = s - 1;
+  for (var i = s; i < e; ++i) {
+    await matteKudasai();
+    if (parseInt(arr[i].style.height) < pivot) {
+      swap(arr, i, ++k);
+    }
+  }
+  swap(arr, ++k, e);
+  await matteKudasai();
+  arr[index].style.background = "cyan";
+  //console.log(pivot,",",k,",",s,"-",e);
+  //console.log(arr);
+  await matteKudasai();
+  await QuickSort(arr, s, k - 1);
+  await QuickSort(arr, k + 1, e);
+}
+
+async function detQuicks() {
+  var bars = document.querySelectorAll(".bar");
+  await QuickSort(bars, 0, bars.length - 1);
+  for (var i = 0; i < bars.length; i++) {
     bars[i].style.background = "green";
     await matteKudasai();
   }
 }
 
 genBars(50);
+
+var bars = document.querySelectorAll(".bar");
+console.log(selectK(bars, 0, bars.length-1, 10).style.height);

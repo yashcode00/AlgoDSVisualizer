@@ -45,16 +45,18 @@ body {
     border: 1pt solid black;
     max-width: 100px;
     transition: 0.1s all ease;
+    max-width: 100px;
 }
-nav{
-    background: #a8ff78;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+nav {
+    background: #a8ff78;
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);
+    background: linear-gradient(to right, #78ffd6, #a8ff78);
     color: black;
     text-shadow: 1px 1px 1px white;
     font-weight: bold;
 }
+
 .row {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -66,7 +68,8 @@ background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, F
     justify-content: space-around;
     margin-left: 10px;
 }
-.btn-div{
+
+.btn-div {
     position: absolute;
     bottom: 10vh;
     display: flex;
@@ -74,23 +77,24 @@ background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, F
     justify-content: center;
     width: 100vw;
 }
+
 button {
     height: 50px;
     min-width: 100px;
-    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: 0;
     border-radius: 8px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
     color: #FFFFFF;
     font-size: 20px;
-    line-height:15px;
+    line-height: 15px;
     padding: 19px 24px;
     cursor: pointer;
     margin: auto 10px;
 }
 
 #canvas {
-    margin-bottom:50px;
+    margin-bottom: 50px;
 }
 
 ellipse {
@@ -103,4 +107,9 @@ text {
 
 path {
     stroke: white !important;
+}
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
