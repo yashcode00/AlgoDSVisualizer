@@ -31,6 +31,7 @@ function arrnew() {
 }
 
 async function insertionSort() {
+    _disableAllBtns();
     let bars = document.querySelectorAll(".bar");
     var len = bars.length;
     for (let i = 0; i < len; i += 1) {
@@ -54,6 +55,7 @@ async function insertionSort() {
         bars[i].style.background = "green";
         await matteKudasai();
     }
+    _enableAllBtns();
 }
 
 function matteKudasai() {
