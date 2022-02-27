@@ -11,6 +11,7 @@ body {
   background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
   font-weight: 300;
 }
+
 .all {
   display: flex;
   perspective: 10px;
@@ -21,21 +22,26 @@ body {
   justify-content: center;
   transform-style: preserve-3d;
 }
+
 .all:hover {
   perspective: 1000px;
   transition: all 1.3s ease-in;
   transform: perspective(10000px) rotateX(0deg);
 }
+
 .all:hover .text {
   opacity: 1;
 }
-.all:hover > div {
+
+.all:hover>div {
   opacity: 1;
   transition-delay: 0s;
 }
+
 .all:hover .explainer {
   opacity: 0;
 }
+
 .left,
 .center,
 .right,
@@ -58,6 +64,7 @@ body {
   cursor: pointer;
   background-blend-mode: color-burn;
 }
+
 .left:hover,
 .center:hover,
 .right:hover,
@@ -66,6 +73,7 @@ body {
   box-shadow: 0 0 30px 10px rgba(100, 100, 255, 0.6);
   background-color: #ccf;
 }
+
 .text {
   transform: translateY(30px);
   opacity: 0;
@@ -77,26 +85,32 @@ body {
   color: #fff;
   text-shadow: 0 0 5px rgba(100, 100, 255, 0.6);
 }
+
 .lefter {
   transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/organization-512.png);
 }
+
 .left {
   transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/creative_draw-512.png);
 }
+
 .center {
   opacity: 1;
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/app_window-512.png);
 }
+
 .right {
   transform: translateX(30px) translateZ(-25px) rotateY(5deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/cloud_weather-512.png);
 }
+
 .righter {
   transform: translateX(60px) translateZ(-50px) rotateY(10deg);
   background-image: url(https://cdn3.iconfinder.com/data/icons/other-icons/48/search-512.png);
 }
+
 .explainer {
   font-weight: 300;
   font-size: 2rem;
@@ -112,6 +126,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .ref {
   background-color: #000;
   background-image: linear-gradient(to bottom, #d80, #c00);
@@ -125,6 +140,28 @@ body {
   text-decoration: none;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
 }
+
 .ref::first-letter {
   font-size: 12px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: blue;
+}
+
+/*
+  Click and drag to attract
+  Right click to repulse
+  Mouse-wheel click to create a time dilation field
+  Use the Controls to decrease or increase
+  the particle count to tweak performance.
+*/
+
+html,body{
+  margin:0;
+  padding:0;
 }

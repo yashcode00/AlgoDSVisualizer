@@ -1,13 +1,22 @@
 var seq = [];
 function _AddEdge() {
-    var inp1 = parseInt(document.querySelector("#node1").value);
-    var inp2 = parseInt(document.querySelector("#node2").value);
-    seq.push([inp1, inp2]);
+    var inp1 = document.querySelector("#node1").value;
+    var inp2 = document.querySelector("#node2").value;
+    console.log(inp1, inp2);
+    if (inp1 === "" || inp2 === "") {
+        alert("Please enter both values!!");
+        return;
+    }
+    seq.push([parseInt(inp1), parseInt(inp2)]);
     render();
 }
 
 function _AddNode() {
     var inp0 = document.querySelector("#node0").value;
+    if (inp0 === "") {
+        alert("Please enter a value!!");
+        return;
+    }
     seq.push(parseInt(inp0));
     render();
 }
