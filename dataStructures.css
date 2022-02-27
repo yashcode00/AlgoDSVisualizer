@@ -1,8 +1,9 @@
 body {
     text-align: center;
     color: white;
-    background-color: rgb(12,12,12);
+    background-color: rgb(12, 12, 12);
 }
+
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
@@ -10,13 +11,15 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    width: 100vw    ;
+    width: 100vw;
     /* justify-content: space-around; */
 }
-body>div{
+
+body>div {
     height: 50%;
     /* display: flex; */
 }
+
 #bars {
     display: flex;
     flex-direction: row;
@@ -25,7 +28,8 @@ body>div{
     margin-right: auto;
     justify-content: center;
 }
-.list{
+
+.list {
     display: flex;
     flex-direction: row-reverse;
     justify-content: center;
@@ -33,11 +37,13 @@ body>div{
     margin-top: 100px;
     width: 80vw;
 }
-.listdiv{
+
+.listdiv {
     display: flex;
     flex-direction: row;
 }
-.box,.qbox{
+
+.box, .qbox {
     height: 100px;
     background-color: cyan;
     color: black;
@@ -49,17 +55,20 @@ body>div{
     font-weight: 800;
     font-size: 2rem;
 }
-img{
+
+img {
     width: 70px;
     position: relative;
     top: 40px;
     height: 50px;
 }
-.arr{
+
+.arr {
     width: 100px;
     height: 100px;
     display: none;
 }
+
 .flex-container {
     margin-top: 20px;
     display: flex;
@@ -84,7 +93,7 @@ img{
     grid-template-columns: 1fr 1fr 2fr;
 }
 
-.btn-div{
+.btn-div {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -93,37 +102,42 @@ img{
     right: 0;
     /* margin-top: 100px; */
 }
-.btn-div input{
+
+.btn-div input {
     margin: 15px 100px;
     height: 25px;
     border-radius: 10px;
 }
-#pushdiv{
+
+#pushdiv {
     display: flex;
     flex-direction: column;
 }
+
 button {
     height: 70px;
     min-width: 100px;
     width: 250px;
-    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+    background-image: linear-gradient(144deg, #AF40FF, #5B42F3 50%, #00DDEB);
     border: 0;
     border-radius: 8px;
     box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
     color: #FFFFFF;
     font-size: 20px;
-    line-height:15px;
+    line-height: 15px;
     padding: 19px 24px;
     cursor: pointer;
     margin: 10px 100px;
     font-weight: 700;
 
 }
-button:hover{
+
+button:hover {
     transform: scale(1.1);
     transition: all 0.5s;
 }
-#headpic{
+
+#headpic {
     height: 200px;
     width: 200px;
     position: absolute;
@@ -131,12 +145,14 @@ button:hover{
     left: 0;
     display: none;
 }
-#queue{
+
+#queue {
     position: relative;
     /* bottom: 0; */
     flex-direction: row;
     margin-top: 0;
 }
-.qbox{
+
+.qbox {
     background-color: #f7fb00;
 }
