@@ -369,6 +369,13 @@ async function countingSort(arr, exp) {
   }
   for (let i = 0; i < arr.length; ++i) {
     arr[i].style.height = output[i];
+    arr[i].style.background = "red";
+    await matteKudasai();
+    arr[i].style.background = "blue";
+  }
+  await matteKudasai();
+  for(let i = 0; i < arr.length; i++) {
+    arr[i].style.background = "cyan";
   }
 }
 
@@ -380,7 +387,11 @@ async function RadixSort() {
       max = parseInt(bars[i].style.height);
   }
   for (var exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
-    countingSort(bars, exp);
+    await countingSort(bars, exp);
+  }
+  for(var i = 0; i < bars.length; i++) {
+    bars[i].style.background = "green";
+    await matteKudasai();
   }
   console.log(bars);
 }

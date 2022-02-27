@@ -1,6 +1,3 @@
-dragElement(document.getElementById("node1"));
-dragElement(document.getElementById("node2"));
-
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
@@ -41,3 +38,29 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
+function generateGraph(elem) {
+    var g = document.getElementById("graph");
+    for(var i = 0; i < elem; i++) {
+        var n = document.createElement("div");
+        n.id = 'node'+i;
+        n.className = 'node';
+        var nH = document.createElement("div");
+        nH.id = 'node'+i+'header';
+        var p = document.createElement('p');
+        p.innerHTML = i;
+        nH.appendChild(p);
+        n.appendChild(nH);
+        n.style.zIndex = i;
+        g.appendChild(n);
+    }
+}
+
+function makeDraggable(elem) {
+    for(var i = 0; i < elem; i++) {
+        dragElement(document.getElementById('node'+i));
+    }
+}
+
+generateGraph(8);
+makeDraggable(8);
