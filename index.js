@@ -80,7 +80,7 @@ async function bubbleSort() {
       bars[j].style.background = "cyan";
       bars[j + 1].style.background = "cyan";
     }
-    bars[bars.length-i-1].style.background = "blue";
+    bars[bars.length - i - 1].style.background = "blue";
   }
   for (var i = 0; i < bars.length; i++) {
     bars[i].style.background = "green";
@@ -94,10 +94,10 @@ async function selectionSort() {
     var mi = parseInt(bars[i].style.height),
       ind = i;
     bars[i].style.background = "orange";
-    for (var j = i+1; j < bars.length; j++) {
+    for (var j = i + 1; j < bars.length; j++) {
       bars[j].style.background = "cyan";
     }
-    for (var j = i+1; j < bars.length; j++) {
+    for (var j = i + 1; j < bars.length; j++) {
       bars[j].style.background = "red";
       await matteKudasai();
       if (mi > parseInt(bars[j].style.height)) {
@@ -345,6 +345,44 @@ async function HeapSort() {
     bars[i].style.background = "green";
     await matteKudasai();
   }
+}
+
+// radix sort
+async function countingSort(arr, exp) {
+  /// making counting and output array
+  var output = [];
+  var count = [];
+  for (var i = 0; i < 10; ++i) {
+    count[i] = 0;
+  }
+  for (var i = 0; i < arr.length; ++i) {
+    count[Math.floor(parseInt(arr[i].style.height) / exp) % 10]++;
+  }
+  for (var i = 1; i < 10; ++i) {
+    count[i] += count[i - 1];
+  }
+
+  for (var i = arr.length - 1; i >= 0; --i) {
+    output[count[Math.floor(parseInt(arr[i].style.height) / exp) % 10] - 1] =
+      arr[i].style.height;
+    count[Math.floor(parseInt(arr[i].style.height) / exp) % 10]--;
+  }
+  for (let i = 0; i < arr.length; ++i) {
+    arr[i].style.height = output[i];
+  }
+}
+
+async function RadixSort() {
+  var bars = document.querySelectorAll(".bar");
+  var max = -1;
+  for (var i = 0; i < bars.length; ++i) {
+    if (parseInt(bars[i].style.height) > max)
+      max = parseInt(bars[i].style.height);
+  }
+  for (var exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
+    countingSort(bars, exp);
+  }
+  console.log(bars);
 }
 
 genBars(50);
